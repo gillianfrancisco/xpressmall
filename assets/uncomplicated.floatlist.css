@@ -1,0 +1,470 @@
+/**
+ * Front-end support (Floating\20 Category\20 List) stylesheet specific to globalxmart\2E myshopify\2E com
+ *   - dependencies: none
+ */
+/**
+ * @preserve Floating\20 Category\20 List - v0\2E 9\2E 11 - globalxmart\2E myshopify\2E com
+ * @licence (c) 2016 Lightenna Ltd
+ */
+
+/* >>> List */
+
+/* level indenting */
+
+/* make categories list styles easy to turn off */
+.category-list.show-styled li.relative-level-0 {
+    margin-left: 0;
+}
+
+.category-list.show-styled li.relative-level-1 {
+    margin-left: 1.0em;
+}
+
+.category-list.show-styled li.relative-level-2 {
+    margin-left: 2.0em;
+}
+
+.category-list.show-styled li.relative-level-3 {
+    margin-left: 3.0em;
+}
+
+.category-list.show-styled li.relative-level-4 {
+    margin-left: 4.0em;
+}
+
+.category-list.show-styled li.relative-level-gt4 {
+    margin-left: 5.0em;
+}
+
+/* by default when styled, hide them all then select subset to show */
+.category-list.show-styled li {
+    display: none;
+    list-style-type: none;
+}
+
+/* by default when styled, don't show product count on categories with 0 products */
+.category-list.show-styled span.pc-zero-hide {
+    display: none;
+}
+
+.category-list.show-styled.show-nopc span.pc {
+    display: none;
+}
+
+/**
+ * Ways of visualising the tree, set in Shopify liquid 'include' tag
+ */
+
+/* always show all cats */
+.category-list.show-styled.show-all li {
+    display: list-item;
+}
+
+
+
+/* show-pathback [default] */
+
+/* always show top-level cats */
+.category-list.show-styled.show-pathback li.level-0 {
+    display: list-item;
+}
+
+/* all supercatpeers show direct children, not their grandchildren */
+.category-list.show-styled.show-pathback li.supercatpeer {
+    display: list-item;
+}
+
+/* all cats on current path (supercats and activecat), activecatpeers and direct children and indirect children (grandchildren) */
+.category-list.show-styled.show-pathback li.supercat, .category-list.show-styled.show-pathback li.activecat, .category-list.show-styled.show-pathback li.activecatpeer, .category-list.show-styled.show-pathback li.subcat {
+    display: list-item;
+}
+
+
+
+/* show-pathdirect */
+
+/* always show top-level cats */
+.category-list.show-styled.show-pathdirect li.level-0 {
+    display: list-item;
+}
+
+/* all supercatpeers show direct children, not their grandchildren */
+.category-list.show-styled.show-pathdirect li.supercatpeer {
+    display: list-item;
+}
+
+/* all cats on current path (supercats and activecat), activecatpeers and direct children only */
+.category-list.show-styled.show-pathdirect li.supercat, .category-list.show-styled.show-pathdirect li.activecat, .category-list.show-styled.show-pathdirect li.activecatpeer, .category-list.show-styled.show-pathdirect li.subcatdirect {
+    display: list-item;
+}
+
+
+
+/* show-activedown */
+
+/* show top-level cats if there's no active category */
+.category-list.show-styled.show-activedown.no-active-cat li.level-0 {
+    display: list-item;
+}
+
+/* show active, all generations of children */
+.category-list.show-styled.show-activedown li.activecat, .category-list.show-styled.show-activedown li.subcat {
+    display: list-item;
+}
+
+
+
+/* show-peersactivedown */
+
+/* show top-level cats if there's no active category */
+.category-list.show-styled.show-peersactivedown.no-active-cat li.level-0 {
+    display: list-item;
+}
+
+/* show active, all generations of children and active category peers */
+.category-list.show-styled.show-peersactivedown li.activecat, .category-list.show-styled.show-peersactivedown li.activecatpeer, .category-list.show-styled.show-peersactivedown li.subcat {
+    display: list-item;
+}
+
+
+
+/* show-activedowndirect */
+
+/* show top-level cats if there's no active category */
+.category-list.show-styled.show-activedowndirect.no-active-cat li.level-0 {
+    display: list-item;
+}
+
+/* show active and all generations of children */
+.category-list.show-styled.show-activedowndirect li.activecat, .category-list.show-styled.show-activedowndirect li.subcatdirect {
+    display: list-item;
+}
+
+
+
+/* show-peersactivedowndirect */
+
+/* show top-level cats if there's no active category */
+.category-list.show-styled.show-peersactivedowndirect.no-active-cat li.level-0 {
+    display: list-item;
+}
+
+/* show active and all generations of children */
+.category-list.show-styled.show-peersactivedowndirect li.activecat, .category-list.show-styled.show-peersactivedowndirect li.activecatpeer, .category-list.show-styled.show-peersactivedowndirect li.subcatdirect {
+    display: list-item;
+}
+
+
+
+/* show-peersactiveup */
+
+/* show top-level cats if there's no active category */
+.category-list.show-styled.show-peersactiveup.no-active-cat li.level-0 {
+    display: list-item;
+}
+
+/* show active but no children */
+.category-list.show-styled.show-peersactiveup li.supercat, .category-list.show-styled.show-peersactiveup li.supercatpeer, .category-list.show-styled.show-peersactiveup li.activecatpeer, .category-list.show-styled.show-peersactiveup li.activecat {
+    display: list-item;
+}
+
+
+
+/* show-activeupdown */
+
+/* show top-level cats if there's no active category */
+.category-list.show-styled.show-activeupdown.no-active-cat li.level-0 {
+    display: list-item;
+}
+
+/* show active and all generations of children */
+.category-list.show-styled.show-activeupdown li.supercat, .category-list.show-styled.show-activeupdown li.activecat, .category-list.show-styled.show-activeupdown li.subcat {
+    display: list-item;
+}
+
+
+
+/* show-activeupdowndirect */
+
+/* show top-level cats if there's no active category */
+.category-list.show-styled.show-activeupdowndirect.no-active-cat li.level-0 {
+    display: list-item;
+}
+
+/* show active and all generations of children */
+.category-list.show-styled.show-activeupdowndirect li.supercat, .category-list.show-styled.show-activeupdowndirect li.activecat, .category-list.show-styled.show-activeupdowndirect li.subcatdirect {
+    display: list-item;
+}
+
+
+
+/* show-peersactiveupdowndirect */
+
+/* show top-level cats if there's no active category */
+.category-list.show-styled.show-peersactiveupdowndirect.no-active-cat li.level-0 {
+    display: list-item;
+}
+
+/* show active and all generations of children */
+.category-list.show-styled.show-peersactiveupdowndirect li.supercat, .category-list.show-styled.show-peersactiveupdowndirect li.supercatpeer, .category-list.show-styled.show-peersactiveupdowndirect li.activecatpeer, .category-list.show-styled.show-peersactiveupdowndirect li.activecat, .category-list.show-styled.show-peersactiveupdowndirect li.subcatdirect {
+    display: list-item;
+}
+
+
+
+/* show-down */
+
+/* show top-level cats if there's no active category */
+.category-list.show-styled.show-down.no-active-cat li.level-0 {
+    display: list-item;
+}
+
+/* show all generations of children */
+.category-list.show-styled.show-down li.subcat {
+    display: list-item;
+}
+
+
+
+/* show-nodups */
+
+/* remove duplicates and all their children */
+.category-list.show-styled.show-nodups li.activeduplicat, .category-list.show-styled.show-nodups li.subduplicat {
+    display: none;
+}
+
+
+/* show-hide-catpc-zero */
+
+/* hide categories that have zero products and zero sub-categories */
+.category-list.show-styled.show-hide-catpc-zero li.catpc-zero {
+    display: none;
+}
+
+
+/* >>> Animations */
+
+.uncomplicatedGreyRedFlash {
+    animation-name: uncomplicatedGreyRedFlashFrames;
+    animation-duration: 0.4s;
+    animation-iteration-count: 1;
+    color: #CCCCCC;
+}
+
+.uncomplicatedFadeInFromNone {
+    -webkit-animation: uncomplicatedFadeInFromNoneFrames 0.5s ease-out;
+    -moz-animation: uncomplicatedFadeInFromNoneFrames 0.5s ease-out;
+    -o-animation: uncomplicatedFadeInFromNoneFrames 0.5s ease-out;
+    animation: uncomplicatedFadeInFromNoneFrames 0.5s ease-out;
+}
+
+/* >>> Animation keyframes */
+
+@-webkit-keyframes uncomplicatedGreyRedFlashFrames {
+    0%  { color: rgba(204, 204, 204, 1); }
+    50%   { color: rgba(255, 0, 0, 1); }
+    100%   { color: rgba(204, 204, 204, 1); }
+}
+
+@-moz-keyframes uncomplicatedGreyRedFlashFrames {
+    0%  { color: rgba(204, 204, 204, 1); }
+    50%   { color: rgba(255, 0, 0, 1); }
+    100%   { color: rgba(204, 204, 204, 1); }
+}
+
+@-o-keyframes uncomplicatedGreyRedFlashFrames {
+    0%  { color: rgba(204, 204, 204, 1); }
+    50%   { color: rgba(255, 0, 0, 1); }
+    100%   { color: rgba(204, 204, 204, 1); }
+}
+
+@keyframes uncomplicatedGreyRedFlashFrames {
+    0%  { color: rgba(204, 204, 204, 1); }
+    50%   { color: rgba(255, 0, 0, 1); }
+    100%   { color: rgba(204, 204, 204, 1); }
+}
+
+@-webkit-keyframes uncomplicatedFadeInFromNoneFrames {
+    0% {
+        display: none;
+        opacity: 0;
+    }
+
+    1% {
+        display: block;
+        opacity: 0;
+    }
+
+    100% {
+        display: block;
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes uncomplicatedFadeInFromNoneFrames {
+    0% {
+        display: none;
+        opacity: 0;
+    }
+
+    1% {
+        display: block;
+        opacity: 0;
+    }
+
+    100% {
+        display: block;
+        opacity: 1;
+    }
+}
+
+@-o-keyframes uncomplicatedFadeInFromNoneFrames {
+    0% {
+        display: none;
+        opacity: 0;
+    }
+
+    1% {
+        display: block;
+        opacity: 0;
+    }
+
+    100% {
+        display: block;
+        opacity: 1;
+    }
+}
+
+@keyframes uncomplicatedFadeInFromNoneFrames {
+    0% {
+        display: none;
+        opacity: 0;
+    }
+
+    1% {
+        display: block;
+        opacity: 0;
+    }
+
+    100% {
+        display: block;
+        opacity: 1;
+    }
+}
+
+
+
+/* full-height for vertical centring */
+.uncomplicated-floatlist-overlay-toptobot {
+    white-space: nowrap;
+    height: 100%;
+    position: fixed;
+        z-index: 11;
+    top: 0;
+    left: 0;
+    /* make the container click-invisible */
+    pointer-events: none;
+    /* animate the introduction of the container */
+    -webkit-animation: uncomplicatedFadeInFromNone 0.5s ease-out;
+    -moz-animation: uncomplicatedFadeInFromNone 0.5s ease-out;
+    -o-animation: uncomplicatedFadeInFromNone 0.5s ease-out;
+    animation: uncomplicatedFadeInFromNone 0.5s ease-out;
+}
+
+/* ghost */
+#uncomplicated-floatlist-overlay-container:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    /* adjust for spacing */
+    margin-right: -0.25em;
+}
+
+/* actual floatlist */
+#uncomplicated-floatlist-overlay {
+    display: inline-block;
+    vertical-align: middle;
+    border: 1px solid transparent;
+    z-index: 1;
+    padding: 0 1.0em 0 2.0em;
+    box-shadow: .1em .1em .2em #DDDDDD;
+    /* make the container click-visible */
+    pointer-events: auto;
+    opacity: 0.92;
+}
+
+#uncomplicated-floatlist-overlay:hover {
+    box-shadow: .2em .2em .5em #AAAAAA;
+    opacity: 1.0;
+}
+
+.uncomplicated-floatlist-overlay-heading {
+    /* don't allow the heading text to be selected */
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
+}
+
+/* contracted floatlist */
+#uncomplicated-floatlist-overlay.uncomplicated-floatlist-overlay-contracted {
+    transform: rotate3d(0,0,1,-90deg);
+    transform-origin: top left;
+    box-shadow: -0.1em .1em .2em #DDDDDD;
+    /* use JS-set offset to adjust for rotation */
+    top: 0;
+    position: relative;
+}
+
+.uncomplicated-floatlist-overlay-contracted .uncomplicated-floatlist-overlay-heading {
+    margin: 0 0 0 0;
+    /* div clickable in contracted state */
+    cursor: pointer;
+}
+
+.uncomplicated-floatlist-overlay-contracted ul {
+    display: none
+}
+
+/* switcher to toggle state */
+.uncomplicated-floatlist-overlay-switcher {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 0 .5em 0 .3em;
+}
+
+.uncomplicated-floatlist-overlay-switcher:hover {
+    text-decoration: none;
+}
+
+.uncomplicated-floatlist-overlay-contracted .uncomplicated-floatlist-overlay-switcher span {
+    display: none;
+}
+
+.uncomplicated-floatlist-overlay-contracted .uncomplicated-floatlist-overlay-switcher:after {
+    content: '\2193'; /* &darr; */
+}
+
+/* made floatlist stick to top if longer than the page, with # priority on class */
+#uncomplicated-floatlist-overlay-container.uncomplicated-floatlist-overlay-stick,
+.uncomplicated-floatlist-overlay-stick #uncomplicated-floatlist-overlay.uncomplicated-floatlist-overlay-expanded {
+    /* do need to set position: absolute, but it breaks the contracted-stuck state so only apply to expanded*/
+    position: absolute;
+    top: 0;
+}
+
+#uncomplicated-floatlist-overlay ul {
+    margin: 0;
+}
+
+/* dynamic section, only used if over_ settings applied */
+#uncomplicated-floatlist-overlay a {
+    color: #606060;
+}
+#uncomplicated-floatlist-overlay li.activecat {
+    color: #B60C0C;
+}
+
+

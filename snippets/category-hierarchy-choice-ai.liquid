@@ -1,0 +1,53 @@
+{% comment %}
+This is for detecting store category hierarchy
+{% endcomment %}
+
+{% layout none %}
+
+<!-- Choice AI Category Hierarchy Script begins -->
+
+<script type="text/javascript" mw_identifier="cai_shopify_category_hierarchy">
+
+  window.CAI_LINKED_LIST = window.CAI_LINKED_LIST || {}
+
+  {% for link in linklists %}
+      window.CAI_LINKED_LIST['{{link.handle}}'] = {
+        url: '{{link.url}}',
+        type: '{{link.type}}',
+        active: '{{link.active}}'
+      }
+      window.CAI_LINKED_LIST['{{link.handle}}']['sublinks'] = {}
+      {% if linklists[link.handle].links.size > 0 %}
+        {% for sublink in linklists[link.handle].links %}
+          window.CAI_LINKED_LIST['{{link.handle}}']['sublinks']['{{sublink.handle}}'] = {
+            url: '{{sublink.url}}',
+            type: '{{sublink.type}}',
+            active: '{{sublink.active}}'
+          }
+          window.CAI_LINKED_LIST['{{link.handle}}']['sublinks']['{{sublink.handle}}']['sublinks'] = {}
+          {% if linklists[sublink.handle].links.size > 0 %}
+            {% for sub2link in linklists[sublink.handle].links %}
+              window.CAI_LINKED_LIST['{{link.handle}}']['sublinks']['{{sublink.handle}}']['sublinks']['{{sub2link.handle}}'] = {
+                url: '{{sub2link.url}}',
+                type: '{{sub2link.type}}',
+                active: '{{sub2link.active}}'
+              }
+              window.CAI_LINKED_LIST['{{link.handle}}']['sublinks']['{{sublink.handle}}']['sublinks']['{{sub2link.handle}}']['sublinks'] = {}
+              {% if linklists[sub2link.handle].links.size > 0 %}
+                {% for sub3link in linklists[sub2link.handle].links %}
+                  window.CAI_LINKED_LIST['{{link.handle}}']['sublinks']['{{sublink.handle}}']['sublinks']['{{sub2link.handle}}']['sublinks']['{{sub3link.handle}}'] = {
+                    url: '{{sub3link.url}}',
+                    type: '{{sub3link.type}}',
+                    active: '{{sub3link.active}}'
+                  }
+                {% endfor %}
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+  {% endfor %}
+
+</script>
+
+<!-- Choice AI Category Hierarchy Script ends -->

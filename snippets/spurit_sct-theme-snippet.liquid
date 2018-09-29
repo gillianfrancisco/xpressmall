@@ -1,0 +1,10 @@
+<script>
+    var SCTParams = {
+        "id" : "1e8be9f2234cd7b1dc3227b645a9c6be",
+        "apiScript" : "{{ 'api.jquery.js' | shopify_asset_url }}",
+        "product" : {{ product | json }},
+        "collection": {{ collection.id | json }},
+        "template": {{ template.name | json }},
+      	"page": {{ page.handle | json }}
+    }
+</script>

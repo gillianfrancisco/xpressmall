@@ -1,0 +1,21 @@
+{% comment %}
+This is for tracking analytics information of store to give better suggestions to user
+{% endcomment %}
+<!-- Choice AI Script begins -->
+<script type="text/javascript" mw_identifier="cai_shopify_file" src="https://d3caf2da6t944y.cloudfront.net/site/ethno/xpressmall529/choice.js"></script>
+<!-- Choice AI Pixel Tracking Script begins -->
+<script type="text/javascript" mw_identifier="cai_shopify_pixel">
+
+window._caiapi = window._caiapi || [];
+
+{% if shop.customer_accounts_enabled %}
+    {% if customer %}
+    _caiapi.push(['trackUser', '{{ customer.email }}' , { "name": "{{customer.name}}", "tags": '[{{customer.tags | join: ', '}}]', 'ordercount':'{{customer.orders_count}}', 'revenue':'{{customer.total_spent}}' , "retaintags":true}]);
+    {% endif %}
+{% endif %}
+
+window.CAI_CART_ITEMS = {{ cart.items | json }};
+
+</script>
+<!-- Choice AI Pixel Tracking Script ends -->
+<!-- Choice AI Script ends -->

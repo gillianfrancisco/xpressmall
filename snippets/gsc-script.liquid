@@ -1,0 +1,1 @@
+{{ 'globocheckout_params.js' | asset_url | script_tag }}<script type="text/javascript">var GOCCConfigs = GOCCConfigs || {};GOCCConfigs.product = {{ product | json }};</script><script type="text/javascript" src="{{ 'globocheckout.js' | asset_url }}" defer="defer"></script>{% include 'gocc-modal-flat' %}

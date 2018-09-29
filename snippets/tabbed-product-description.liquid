@@ -1,0 +1,151 @@
+{% assign heading = shop.metafields.magictabs.heading %}
+{% assign headingtype = shop.metafields.magictabs.activetabstyling %}
+{% assign headingcolor = shop.metafields.magictabs.activetabcolor %}
+{% if product.description != blank %}
+<div class="ec-tabbed-descriptions">
+  <div class="ec-tab-container">
+  </div>
+  <div class="ec-description-container">
+    {{ product.description }}
+  </div>
+</div>
+{% endif %}
+<style type="text/css">
+.ec-tab-content {
+  display: inline-block;
+  width: 100%;
+}
+.ec-tabbed-descriptions .ec-tab-container .ec-tab-picker {
+  display: inline-block;
+  margin-right: 30px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+{% if headingtype == "underline" %}
+.ec-tabbed-descriptions .ec-tab-container .ec-tab-picker h4 {
+  margin-bottom: 3px !important;
+}
+.ec-tabbed-descriptions .ec-tab-container .ec-tab-picker.ec-active-tab {
+  border-bottom: 1px solid #bbb;
+}
+{% else %}
+.ec-tabbed-descriptions .ec-tab-container .ec-tab-picker.ec-active-tab h4 {
+  color: {{ headingcolor }} ;
+}
+{% endif %}
+.ec-tabbed-descriptions .ec-tab-container {
+  float: left;
+  width: 100%;
+}
+</style>
+<script>
+function loadScript(url, callback){
+    var script = document.createElement("script")
+    script.type = "text/javascript";
+    if (script.readyState){  //IE
+        script.onreadystatechange = function(){
+            if (script.readyState == "loaded" ||
+                    script.readyState == "complete"){
+                script.onreadystatechange = null;
+                callback();
+            }
+        };
+    } else {  //Others
+        script.onload = function(){
+            callback();
+        };
+    }
+    script.src = url;
+    document.getElementsByTagName("head")[0].appendChild(script);
+}
+
+
+  var ecTabbedDescriptionJS = function($){
+
+    var slugCreate = function(str) {
+        var $slug = '';
+        var trimmed = $.trim(str);
+        $slug = trimmed.replace(/[^a-z0-9-]/gi, '-').
+        replace(/-+/g, '-').
+        replace(/^-|-$/g, '');
+        return $slug.toLowerCase();
+    }
+
+    $('body').on('click', '.ec-tab-picker', function() {
+      $tabName = $(this).attr('class').split(' ')[1];
+
+      var tabParent = jQuery(this).parents('.ec-tabbed-descriptions');
+
+      tabParent.find(jQuery('.ec-tab-content')).not('.' + $tabName).hide();
+      tabParent.find(jQuery('.ec-tab-picker')).not('.' + $tabName).removeClass('ec-active-tab');
+      tabParent.find(jQuery('.ec-tab-content.' + $tabName)).css('display', 'inline-block');
+      jQuery(this).addClass('ec-active-tab');
+    });
+
+    if(jQuery('.ec-description-container').find('{{ heading }}').length >= 1){
+
+      jQuery( ".ec-tabbed-descriptions" ).each(function() {
+
+        if(!$(this).hasClass("ec-tabs-processed")) {
+
+          var tabParent = jQuery(this);
+
+          $counter = 0;
+          tabParent.find($('.ec-description-container')).addClass('tabs-are-shown');
+          tabParent.find($('.ec-tab-container')).show();
+          //$('.ec-description-container {{ heading }}').each( function () {
+          tabParent.find($('{{ heading }}')).each( function () {
+            $counter++;
+
+            var grpForDiv= [];          
+            var next = $(this).next(); 
+            var tab = $(this).text();
+            jQuery(this).hide();
+            var tabSlug = 'tab-' + slugCreate(tab);
+            if($counter == 1){
+              tabParent.find(jQuery('.ec-tab-container')).append('<div class="ec-tab-picker ' + tabSlug + ' ec-active-tab"><h4>' + tab + '</h4></div>');
+            } else {
+              tabParent.find(jQuery('.ec-tab-container')).append('<div class="ec-tab-picker ' + tabSlug + '"><h4>' + tab + '</h4></div>');
+            }
+            grpForDiv.push(this);
+            while ( next.length!==0 && next!== undefined && next[0].nodeName !== '{{ heading }}'){
+                grpForDiv.push(next[0]);
+                next = next.next();
+            }       
+            if($counter == 1){
+                jQuery(grpForDiv).wrapAll('<div class="ec-tab-content ' + tabSlug + '" />');
+            } else {
+                jQuery(grpForDiv).wrapAll('<div style="display: none;" class="ec-tab-content ' + tabSlug + '" />');
+            }
+          });
+
+          tabParent.find($('.ec-tab-content .ec-tab-content')).each( function () {
+            $(this).parentsUntil(tabParent.find($('.ec-description-container'))).before(this);
+          });
+        }
+
+        jQuery(this).addClass('ec-tabs-processed');
+
+        var tabContainer = tabParent.find(jQuery('.ec-tab-container'));
+
+        tabContainer.insertBefore(tabParent.find(jQuery('.ec-tab-content').first()));
+
+      });
+
+
+
+      
+    }
+
+  };
+
+
+if ((typeof jQuery === 'undefined') || (parseFloat(jQuery.fn.jquery) < 1.7)) {
+  loadScript('//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js', function(){
+    jQuery191 = jQuery.noConflict(true);
+    ecTabbedDescriptionJS(jQuery191);
+  });
+} else {
+  ecTabbedDescriptionJS(jQuery);
+}
+</script>
