@@ -174,11 +174,11 @@
 <!-- spurit_sct-added -->
 {% include 'spurit_sct-theme-snippet' %}
 <!-- /spurit_sct-added -->
-<!--
+ 
 <script>
   jQuery.noConflict();
   jQuery(document).ready(function($){
-  		$( "img" ).ezPlus({
+  		$( ".imagezoom" ).ezPlus({
           zoomWindowFadeOut: 500,
           cursor: 'crosshair',
           zoomWindowWidth: 800,
@@ -187,9 +187,13 @@
 	  	});
 
       });
-  
+  jQuery(document).ready(function($){
+  	$('#product-gallery--thumbnail-trigger').hover(
+       function(){ $(this).addClass('thumbnail--selected') 
+    });
+  });
 </script> 
--->   
+ 
 
        
 

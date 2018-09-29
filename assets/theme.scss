@@ -1,167 +1,304 @@
-{% assign font_settings = 'type_body:bolder|type_heading:bolder' %}
-{% assign font_settings = font_settings | split: '|' %}
-{% assign font_scss_variables = '' %}
-{% for font_setting in font_settings %}
-  {% assign font_info = font_setting | split: ':' %}
+
+
+
+
+  
  
-  {% comment %}Get setting name{% endcomment %}
-  {% assign font_setting_name = font_info[0] %}
   
-  {% comment %}Get additional weights{% endcomment %}
-  {% assign font_additional_weights = font_info[1] | split: ',' | uniq %}
   
-  {% comment %}Create variables for use in SCSS{% endcomment %}
-  {% assign font_scss_base = font_setting_name | replace: '_', '-' | prepend: '$' %}
-  {% assign font_scss_reference = font_scss_base %}
-  {% assign font_scss_family = font_scss_base | append: '-family' %}
-  {% assign font_scss_weights = font_scss_base | append: '-weights' %}
-  {% assign font_scss_named_weights = font_scss_base | append: '-named-weights' %}
-  {% assign font_scss_styles = font_scss_base | append: '-styles' %}
-  {% assign font_scss_named_styles = font_scss_base | append: '-named-styles' %}
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
    
-  {% comment %}Add the current setting to a list of reference variables{% endcomment %}
-  {% assign font_scss_variables = font_scss_variables | append: '|' | append: font_scss_reference %}
+  
+  
  
-  {% comment %}Get the initial FontDrop, and an italic style FontDrop{% endcomment %}
-  {% assign font_initial = settings[font_setting_name] %}
-  {% assign font_initial_weight = font_initial.weight | times: 1 %}
-  {% assign font_italic = font_initial | font_modify: 'style', 'italic' %}
-  {% assign font_styles = '(' | append: font_initial.style %}
-  {% assign font_named_styles = '(initial' %}
-  {% assign font_weights = font_initial_weight %}
-  {% assign font_named_weights = 'initial' %}
+  
+  
+  
+  
+  
+  
+  
+  
 
- {{ font_initial | font_face }}
-  {{ font_italic | font_face }} 
+ @font-face {
+  font-family: Arimo;
+  font-weight: 400;
+  font-style: normal;
+  src: url("https://fonts.shopifycdn.com/arimo/arimo_n4.37b74ffdd8f32b386933afc2f690ab2b837c67d4.woff2?h1=eHByZXNzbWFsbC5jb20&hmac=01b5bccca3bed092315f632010740f3f2e20a29e564c2637bfa8186f2136bc10") format("woff2"),
+       url("https://fonts.shopifycdn.com/arimo/arimo_n4.3b91be2b1578df1fd5917078b7d92a21cb34d88e.woff?h1=eHByZXNzbWFsbC5jb20&hmac=ce795d9c028eb7fd51ad5647c26f684a5f8e82216c9452cdd48a884146531b60") format("woff");
+}
 
-  {% comment %}Use the font face italic style if possible, otherwise use something browser friendly{% endcomment %}
-  {% assign font_initial_italic_style = font_italic.style | default: 'italic' %}
-  {% assign font_styles = font_styles | append: ', ' | append: font_initial_italic_style %}
-  {% assign font_named_styles = font_named_styles | append: ', italic' %}
+  @font-face {
+  font-family: Arimo;
+  font-weight: 400;
+  font-style: italic;
+  src: url("https://fonts.shopifycdn.com/arimo/arimo_i4.9739ae4f9473f2a63d3554a38a434d5ce842d444.woff2?h1=eHByZXNzbWFsbC5jb20&hmac=cb2e123b0fe012c5bddb45ad79e22882b5bfe03364ee37fdd7a64aed489e4db3") format("woff2"),
+       url("https://fonts.shopifycdn.com/arimo/arimo_i4.d350b23df4855a383320ead1b9422fa48bb3a6b9.woff?h1=eHByZXNzbWFsbC5jb20&hmac=cc20157bf801c803d96688a91500e5918f7890522a304507b2e2bcf71f421123") format("woff");
+}
+ 
 
-  {% assign font_styles = font_styles | append: ')' %}
-  {% assign font_named_styles = font_named_styles | append: ')' %}
+  
+  
+  
+  
 
-  {% comment %}Iterate over each additional weight to load font face, and weights{% endcomment %}
-  {% for font_adjustment in font_additional_weights %}
-    {% assign font_weighted = font_initial | font_modify: 'weight', font_adjustment %}
-    {% assign font_styled = font_weighted | font_modify: 'style', 'italic' %}
-    {% assign font_weighted_styles = blank %}
-    {% assign font_weighted_named_styles = blank %}
+  
+  
 
-    {% comment %}If additional weight exists, generate font face{% endcomment %}
-    {{ font_weighted | font_face }}
+  
+  
+    
+    
+    
+    
 
-    {% comment %}Create a default value of the weight adjustment is not possible{% endcomment %}
-    {% assign font_adjustment_default = '' %}
-    {% case font_adjustment %}
-      {% when 'lighter' %}
-        {% comment %}Shopify requirement: If lighter variant is not found, use default value of 300{% endcomment %}
-        {% assign font_adjustment_default = 300 %}
-        {% if font_initial_weight < 300 %}
-          {% assign font_adjustment_default = font_initial_weight %}
-        {% endif %}
-      {% when 'bolder' %}
-        {% comment %}Shopify requirement: If bolder variant is not found, use default value of 700{% endcomment %}
-        {% assign font_adjustment_default = 700 %}
-        {% if font_initial_weight > 700 %}
-          {% assign font_adjustment_default = font_initial_weight %}
-        {% endif %}
-      {% else %}
-        {% assign font_adjustment_default = font_adjustment %}
-    {% endcase %}
-    {% assign font_weighted_value = font_weighted.weight | default: font_adjustment_default %}
-    {% assign font_weighted_style = font_weighted.style | default: 'normal' %}
+    
+    @font-face {
+  font-family: Arimo;
+  font-weight: 700;
+  font-style: normal;
+  src: url("https://fonts.shopifycdn.com/arimo/arimo_n7.bf3fa65912c7598edac87f3464dc56cced61307e.woff2?h1=eHByZXNzbWFsbC5jb20&hmac=6cb9f673866702209ba42f0fa1affb09dfa9b6dcfc6325b8790dc71ae4c80995") format("woff2"),
+       url("https://fonts.shopifycdn.com/arimo/arimo_n7.1de27ffea9bb2528cf1df7ad7c3c04a2b278cd8d.woff?h1=eHByZXNzbWFsbC5jb20&hmac=3500a2a14458d6a332c69fa203d15093ffa96e09eab75a1953342ff6639d5957") format("woff");
+}
 
-    {% assign font_weights = font_weights | append: '|' | append: font_weighted_value %}
-    {% assign font_named_weights = font_named_weights | append: '|' | append: font_adjustment %}
-    {% assign font_weighted_styles = font_weighted_styles | append: font_weighted_style %}
-    {% assign font_weighted_named_styles = font_weighted_named_styles | append: 'initial' %}
 
-    {% comment %}If italic exists for weight, generate font face{% endcomment %}
-    {{ font_styled | font_face }}
-    {% assign font_weighted_italic_style = font_styled.style | default: 'italic' %}
-    {% assign font_weighted_styles = font_weighted_styles | append: '|' | append: font_weighted_italic_style %}
-    {% assign font_weighted_named_styles = font_weighted_named_styles | append: '|italic' %}
+    
+    
+    
+    
+    
 
-    {% if font_weighted_styles != blank %}
-      {% assign font_weighted_styles = font_weighted_styles | split: '|' | join: ', ' %}
-      {% assign font_weighted_named_styles = font_weighted_named_styles | split: '|' | join: ', ' %}
+    
+    
+    
+    
 
-      {% assign font_styles = font_styles | append: '|(' | append: font_weighted_styles | append: ')'%}
-      {% assign font_named_styles = font_named_styles | append: '|(' | append: font_weighted_named_styles | append: ')'%}
-    {% endif %}
+    
+    @font-face {
+  font-family: Arimo;
+  font-weight: 700;
+  font-style: italic;
+  src: url("https://fonts.shopifycdn.com/arimo/arimo_i7.f62cd88331ad0c31a41f31618f8ff95cca052800.woff2?h1=eHByZXNzbWFsbC5jb20&hmac=028ccf918173db5613c72e970794f27f20af730cf22e3dc5c004f85d316b42fd") format("woff2"),
+       url("https://fonts.shopifycdn.com/arimo/arimo_i7.6ead2569d278254c7a14fcf41f3024dc621fc58a.woff?h1=eHByZXNzbWFsbC5jb20&hmac=d9e77c3a8df0ea1e8d8e8a121faaea0df3f3c043e6edd0c5b895a79d3d58cd02") format("woff");
+}
 
-    {% assign font_weighted = blank %}
-    {% assign font_styled = blank %}
-    {% assign font_weighted_styles = blank %}
+    
+    
+    
 
-    {% assign font_adjustment_default = blank %}
-    {% assign font_weighted_value = blank %}
-    {% assign font_weighted_style = blank %}
-    {% assign font_weighted_italic_style = blank %}
-  {% endfor %}
+    
 
-  {% comment %}If only one weight, add an empty list to styles{% endcomment %}
-  {% comment %}`length()` reports length of nested list if list only has 1 index{% endcomment %}
-  {% assign font_weights_size = font_weights | split: '|' %}
-  {% if font_weights_size.size == 1 %}
-    {% assign font_styles = font_styles | append: '|()' %}
-    {% assign font_named_styles = font_named_styles | append: '|()' %}
-  {% endif %}
+    
+    
+    
 
-  {% comment %}Output variables for setting to SCSS{% endcomment %}
-  {{ font_scss_reference }}: {{ font_setting_name }};
-  {{ font_scss_family }}: {{ font_initial.family }}, {{ font_initial.fallback_families }};
-  {{ font_scss_styles }}: ({{ font_styles | split: '|' | join: ', ' }});
-  {{ font_scss_named_styles }}: ({{ font_named_styles | split: '|' | join: ', ' }});
-  {{ font_scss_weights }}: ({{ font_weights | split: '|' | join: ', ' }});
-  {{ font_scss_named_weights }}: ({{ font_named_weights | split: '|' | join: ', ' }});
+    
+    
+    
+    
+  
 
-  {% comment %}Blank used variables to prevent bleeding{% endcomment %}
-  {% assign font_info = blank %}
-  {% assign font_setting_name = blank %}
-  {% assign font_additional_weights = blank %}
-  {% assign font_scss_base = blank %}
-  {% assign font_scss_reference = blank %}
-  {% assign font_scss_family = blank %}
-  {% assign font_scss_styles = blank %}
-  {% assign font_scss_named_styles = blank %}
-  {% assign font_scss_weights = blank %}
-  {% assign font_scss_named_weights = blank %}
-  {% assign font_initial = blank %}
-  {% assign font_italic = blank %}
-  {% assign font_weights = blank %}
-  {% assign font_named_weights = blank %}
-  {% assign font_initial_italic_style = blank %}
-  {% assign font_styles = blank %}
-  {% assign font_named_styles = blank %}
-{% endfor %}
+  
+  
+  
+  
 
-{% assign font_scss_variables = font_scss_variables | remove_first: '|' | split: '|' %}
+  
+  $type-body: type_body;
+  $type-body-family: Arimo, sans-serif;
+  $type-body-styles: ((normal, italic), (normal, italic));
+  $type-body-named-styles: ((initial, italic), (initial, italic));
+  $type-body-weights: (400, 700);
+  $type-body-named-weights: (initial, bolder);
 
-{% comment %}Build SCSS friendly lists of weights{% endcomment %}
-{% assign font_variable_families = '' %}
-{% assign font_variable_weights = '' %}
-{% assign font_variable_named_weights = '' %}
-{% assign font_variable_styles = '' %}
-{% assign font_variable_named_styles = '' %}
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
-{% for variable in font_scss_variables %}
-  {% assign font_variable_families = font_variable_families | append: ' ' | append: variable | append: '-family' %}
-  {% assign font_variable_weights = font_variable_weights | append: ' ' | append: variable | append: '-weights' %}
-  {% assign font_variable_named_weights = font_variable_named_weights | append: ' ' | append: variable | append: '-named-weights' %}
-  {% assign font_variable_styles = font_variable_styles | append: ' ' | append: variable | append: '-styles' %}
-  {% assign font_variable_named_styles = font_variable_named_styles | append: ' ' | append: variable | append: '-named-styles' %}
-{% endfor %}
+  
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+   
+  
+  
+ 
+  
+  
+  
+  
+  
+  
+  
+  
 
-{% comment %}Create SCSS lists of variables, which are used as references in functions{% endcomment %}
-$font-variables: ({{ font_scss_variables | join: ' ' }});
-$font-variables-families: ({{ font_variable_families | strip }});
-$font-variables-weights: ({{ font_variable_weights | strip }});
-$font-variables-named-weights: ({{ font_variable_named_weights | strip }});
-$font-variables-styles: ({{ font_variable_styles | strip }});
-$font-variables-named-styles: ({{ font_variable_named_styles | strip }});
+ @font-face {
+  font-family: Futura;
+  font-weight: 500;
+  font-style: normal;
+  src: url("https://fonts.shopifycdn.com/futura/futura_n5.5632c6d8a6da9141ef40e51d14264a007bcae7e5.woff2?h1=eHByZXNzbWFsbC5jb20&hmac=7a9decab1033c6acf2d688f6bd159912d9d63db271aae220b92b1edf5cdd5de1") format("woff2"),
+       url("https://fonts.shopifycdn.com/futura/futura_n5.ea788239cf399e57dbdfe80e24bba751e5c2a36c.woff?h1=eHByZXNzbWFsbC5jb20&hmac=c723709257e17a088cf92dfe1104a5fa797894634d8e293f0fbf0bbd178bf5f9") format("woff");
+}
+
+  @font-face {
+  font-family: Futura;
+  font-weight: 500;
+  font-style: oblique;
+  src: url("https://fonts.shopifycdn.com/futura/futura_o5.2374ce1c635b408a1f07994a3de4a936fc50f767.woff2?h1=eHByZXNzbWFsbC5jb20&hmac=6d772907552456dbbc337fea457112208193b98867ae827a9643da5c256ca4d1") format("woff2"),
+       url("https://fonts.shopifycdn.com/futura/futura_o5.1bf4df2c089a877c3ba2d33a9d4c7908742bfc89.woff?h1=eHByZXNzbWFsbC5jb20&hmac=14d96d27ba93e798eec54d08748141ce98bb1cfd836243095534c6cd5d9a1d07") format("woff");
+}
+ 
+
+  
+  
+  
+  
+
+  
+  
+
+  
+  
+    
+    
+    
+    
+
+    
+    @font-face {
+  font-family: Futura;
+  font-weight: 700;
+  font-style: normal;
+  src: url("https://fonts.shopifycdn.com/futura/futura_n7.153f8fffad8e901382179997bbb87aa7a5ff33b3.woff2?h1=eHByZXNzbWFsbC5jb20&hmac=9793e72b9339d1e98f84d957aa31f61912e2a1f4b2df3b086a2b42ff6f1a1a32") format("woff2"),
+       url("https://fonts.shopifycdn.com/futura/futura_n7.711e9243b3eccc2745ecf4731eba61651a122376.woff?h1=eHByZXNzbWFsbC5jb20&hmac=fc5f183c4eafd964722befa6e26a9e4151a464805a2d1bd486c03507f6ebe815") format("woff");
+}
+
+
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    @font-face {
+  font-family: Futura;
+  font-weight: 700;
+  font-style: oblique;
+  src: url("https://fonts.shopifycdn.com/futura/futura_o7.ece1472e1fefbb598873ba72dc2bfa2e050347c1.woff2?h1=eHByZXNzbWFsbC5jb20&hmac=a729c075625921c7e25cdad71b8516c4fa4981bc52d71903d37fb13044af48f1") format("woff2"),
+       url("https://fonts.shopifycdn.com/futura/futura_o7.7028291332320745f0217c346c800da7522a22b2.woff?h1=eHByZXNzbWFsbC5jb20&hmac=f982c924ea280d7967d03a61232968f145e7e4e6f2a7ca5143dcc1c3aa619e23") format("woff");
+}
+
+    
+    
+    
+
+    
+
+    
+    
+    
+
+    
+    
+    
+    
+  
+
+  
+  
+  
+  
+
+  
+  $type-heading: type_heading;
+  $type-heading-family: Futura, sans-serif;
+  $type-heading-styles: ((normal, oblique), (normal, oblique));
+  $type-heading-named-styles: ((initial, italic), (initial, italic));
+  $type-heading-weights: (500, 700);
+  $type-heading-named-weights: (initial, bolder);
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$font-variables: ($type-body $type-heading);
+$font-variables-families: ($type-body-family $type-heading-family);
+$font-variables-weights: ($type-body-weights $type-heading-weights);
+$font-variables-named-weights: ($type-body-named-weights $type-heading-named-weights);
+$font-variables-styles: ($type-body-styles $type-heading-styles);
+$font-variables-named-styles: ($type-body-named-styles $type-heading-named-styles);
 
 .wishlistbutton{
   background: linear-gradient(#ff9f00,#fb641b) !important; 
@@ -496,12 +633,12 @@ display: inline;
   @if $font-weight { font-weight: font-weight($font-type, $font-weight: $font-weight); }
 }
 
-{% assign font_scss_variables = blank %}
-{% assign font_variable_families = blank %}
-{% assign font_variable_weights = blank %}
-{% assign font_variable_named_weights = blank %}
-{% assign font_variable_styles = blank %}
-{% assign font_variable_named_styles = blank %}
+
+
+
+
+
+
 
 
 // External libraries
@@ -1056,29 +1193,29 @@ $font-body: $type-body !default;
 // Colors
 
 // Backgrounds
-$color-background: color-transparent({{ settings.color_background }});
+$color-background: color-transparent(#f1f3f6);
 
 // Typography
-$color-heading: {{ settings.color_headings }};
-$color-text: {{ settings.color_text }};
+$color-heading: #484848;
+$color-text: #4d4d4d;
 $color-text-hover: morph($color-text, 5);
-$color-link: {{ settings.color_links }};
+$color-link: #e32619;
 $color-link-hover: morph($color-link, 3);
 
 // Buttons
-$color-button-text: {{ settings.color_button_text }};
-$color-button-background: {{ settings.color_button_background }};
+$color-button-text: #ffffff;
+$color-button-background: #e32619;
 $color-button-background-hover: mix($color-background, $color-button-background, 10%);
 $color-button-background-focus: morph($color-button-background);
 $color-button-disable: desaturate($color-button-background, 100%);
 
 // Header
-$color-header-text: {{ settings.color_header_text }};
-$color-header-background: color-transparent({{ settings.color_header_background }});
+$color-header-text: #4d4d4d;
+$color-header-background: color-transparent(#ffffff);
 
 // Footer
-$color-footer-text: {{ settings.color_footer_text }};
-$color-footer-background: color-transparent({{ settings.color_footer_background }});
+$color-footer-text: #000000;
+$color-footer-background: color-transparent(#ffffff);
 $color-footer-link: morph($color-footer-text);
 $color-footer-color-alt: transparentize($color-footer-text, 0.2);
 $color-additional-accent: transparentize($color-footer-text, 0.5);
