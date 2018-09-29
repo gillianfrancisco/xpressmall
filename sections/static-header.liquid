@@ -124,14 +124,7 @@
     </a>
   </div>
 
-  <div
-    class="
-      site-header-main
-      {% if section.settings.small_promo_text != empty %}
-        small-promo-enabled
-      {% endif %}
-    "
-  >
+  <div class="site-header-main {%- if section.settings.small_promo_text != empty %} small-promo-enabled {% endif -%}">
    
     <div class="site-header-logo">
       <a
@@ -176,7 +169,9 @@
       enable_content: section.settings.enable_live_search_articles_pages
     %}
 
-    {% if section.settings.small_promo_text != blank or section.settings.small_promo_heading != blank %}
+    
+  </div>
+{% if section.settings.small_promo_text != blank or section.settings.small_promo_heading != blank %}
     <div class="freedelivery">
       <a
         class="small-promo"
@@ -229,14 +224,15 @@
         </div>
       </a>
     </div>
-    {% endif %}
-  </div>
+    {% endif %} 
 <div class="toprightbuttons">
   <div class="loginheader">
+    
   <ul class="site-header-actions" data-header-actions>
 	{% if shop.customer_accounts_enabled %}
     {% unless customer %}
    <!-- //new login and signup// -->
+ 
 <a class="customersupp" href="#" target="_blank" >Customer Support  </a>
     
 <a class="logtext" href="https://shopify.webkul.com/multivendor/?sid=9645" target="_blank" >Sell with us</a>

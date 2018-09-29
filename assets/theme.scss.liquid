@@ -216,15 +216,15 @@ $font-variables-named-styles: ({{ font_variable_named_styles | strip }});
 }
 
 .toprightbuttons{
- transform:translateX(60%); 
+/*  transform:translateX(30%);  */
  display: block;
 }
 
 //free deliveries icon and content
-.freedelivery{
+/* .freedelivery{
 transform: translateX(135%);
 display: inline;
-}
+} */
 
 //button checkout css//
  
@@ -3018,7 +3018,7 @@ h6 {
 $local-header-icon-padding: 0px;
 $local-header-icon-width: 48px;
 $local-header-icon-height: $header-content-height;
-$local-header-main-space: (30px, 500px); // Space left, right between logo/search and icons
+$local-header-main-space: (30px, 170px); // Space left, right between logo/search and icons
 
 .site-header-wrapper {
   //@include header-shadow;
@@ -3062,7 +3062,7 @@ $local-header-main-space: (30px, 500px); // Space left, right between logo/searc
 
   @include media($min: $bp-large) {
     //padding-right: $gutter-outer;
-    padding-right: 40px;
+    padding-right: 25px;
     padding-left: $gutter-outer;
   }
   position: relative;
@@ -3336,7 +3336,8 @@ $local-header-main-space: (30px, 500px); // Space left, right between logo/searc
   }
 
   @include media($min: $bp-large) {
-    right: $gutter-outer - $local-header-icon-padding;
+/*     right: $gutter-outer - $local-header-icon-padding; */
+       right: 40px;
   }
 
   svg {
@@ -3458,6 +3459,7 @@ $local-header-main-space: (30px, 500px); // Space left, right between logo/searc
   text-decoration: none;
   -webkit-transform: translate3d(0, 0, 0) scale(1);
           transform: translate3d(0, 0, 0) scale(1);
+  transform: translateX(-80%);
 
   @include media($max: $bp-large) {
     padding: {
@@ -13691,7 +13693,7 @@ $local-indentation: rem(13px);
 
   .navmenu-link--active {
     @extend %link--default;
-    @include font($font-body, $font-family: false, $font-weight: bolder); 
+    @include font($font-body, $font-family: false, $font-weight: bolder);
   }
 
   .navmenu-item {
@@ -14369,7 +14371,7 @@ $local-stack: (100, 50);
 
   .price--compare-at {
     margin-right: $space-xx-small;
-    
+
     &.visible + .price--main {
       color: $color-sale;
     }
@@ -16134,9 +16136,9 @@ $local-image-width: rem(48px);
   right: -1px;
   left: -1px;
   border: 1px solid transparentize($color-border, 0.8);
-  min-width: 500px;
+/*   min-width: 500px; */
   //width: calc(230% - #{53px});
-  width: 150%;
+  width: 100%;
   max-width: 70vw;
   border-radius: 3px 4px 4px 3px;
   -webkit-box-shadow: 0 2px 3px transparentize($color-border, 0.89);
@@ -16721,9 +16723,11 @@ $local-image-width: rem(48px);
     transform: translateY(-55%);
     }
 }
-
-
-
+@media only screen and (min-width: 1170px) { 
+  .navmenu-link{
+	font-size:13.5px;
+  }
+}
 //desktops and tablets
 @media only screen and (min-width: 1210px) { 
   .leftpane-sticky{
@@ -16850,22 +16854,22 @@ $local-image-width: rem(48px);
 }
 
 @media (min-width: 1024px) and (max-width: 1280px) { 
-  .freedelivery{  
+/*   .freedelivery{  
     transform: translateX(110%);
-  }
-  .live-search-form{
+  } */
+/*   .live-search-form{
     width: 20vw; 
     min-width: 350px;
-  }
-  .site-header-actions{
+  } */
+/*   .site-header-actions{
     margin-left: -250px;
-  }
+  } */
  
 } 
 @media (min-width: 1024px) and (max-width: 1133px) { 
-  .freedelivery{  
+/*   .freedelivery{  
     transform: translateX(115%);
-  }
+  } */
 }
 
 
@@ -16881,8 +16885,8 @@ $local-image-width: rem(48px);
  
 @media (min-width: 1024px) and (max-width: 1085px) { 
   .live-search-form{
-    width: 15vw; 
-    min-width: 280px;
+/*     width: 15vw;  */
+/*     min-width: 280px; */
   } 
  
 } 
@@ -16898,8 +16902,8 @@ $local-image-width: rem(48px);
 
 @media (min-width: 1024px) and (max-width: 1210px) { 
   .live-search-form{
-    width: 15vw; 
-    min-width: 280px;
+/*     width: 15vw; 
+    min-width: 280px; */
   } 
 }  
 
