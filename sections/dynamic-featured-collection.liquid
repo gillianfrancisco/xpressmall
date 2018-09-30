@@ -1,7 +1,7 @@
 {% include 'pagination' with settings.collection_sidebar %}
 {% assign collection = collections[section.settings.collection] %}
 
-{% assign product_limit = 7 %}
+{% assign product_limit = 15 %}
 {% assign products = collection.products %}
 {% assign onboarding = false %}
 
@@ -25,7 +25,7 @@
   </div>
  <!-- </div> -->
 <div class="insidebox">
-<div class="home-section--content product-row" id="contentrow" data-product-row>
+<div class="home-section--content product-row " id="contentrow" data-product-row>
  {% for product in products limit: product_limit %}
       {%
         include 'product-grid-item',
@@ -47,8 +47,8 @@
     {% endfor %}
   </div>
   
-<!--  <span class="btn prev"></span>
-  <span class="btn next"></span> -->
+ <span class="btn prev"></span>
+  <span class="btn next"></span>
 <!--
        <div
       class="

@@ -18,155 +18,153 @@
     "
   >
     {% for block in section.blocks %}
-      {% capture placeholder_slide_image %}
-        {% capture current %}{% cycle 1, 2 %}{% endcapture %}
-        {% assign placeholder_style = 'lifestyle-' | append: current %}
-        {%-
-          include 'placeholder_svg_uri'
-          placeholder: placeholder_style
-        -%}
-      {% endcapture %}
+          {% capture placeholder_slide_image %}
+            {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+            {% assign placeholder_style = 'lifestyle-' | append: current %}
+            {%-
+              include 'placeholder_svg_uri'
+              placeholder: placeholder_style
+            -%}
+          {% endcapture %}
 
-      <div
-        class="
-          slideshow-slide
-          slideshow-height-{{ section.settings.slideshow_height }}
-        "
-        {{ block.shopify_attributes }}
-      >
-        {% if block.settings.link != blank %}
-          <a
-            class="
-              slideshow-link
-              slideshow-height-{{ section.settings.slideshow_height }}
-            "
-            href="{{ block.settings.link }}"
-          >
-        {% endif %}
-
-        {% assign slideshow_crop = 'center' %}
-
-        {% if section.settings.slideshow_height == 'original' %}
-          {% assign slideshow_crop = false %}
-        {% endif %}
-
-        <div
-          class="
-            slideshow-background
-            slideshow-background--{{ block.id }}
-            slideshow-height-{{ section.settings.slideshow_height }}
-            {% if block.settings.background_image == blank %}
-              placeholder--image
-            {% endif %}
-          "
-          {% if block.settings.background_image %}
-            {%
-              include 'rimg',
-              img: block.settings.background_image,
-              size: '2000x2000',
-              crop: slideshow_crop,
-              lazy: true,
-              background: true,
-            %}
-          {% else %}
-            style="background-image: url('{{ placeholder_slide_image | strip }}')"
-          {% endif %}
-          data-themecolor="{{ settings.color_text }}"
-          data-slidecolor="{{ block.settings.color }}"
-        >
-          {% if block.settings.background_image %}
-            {%
-              include 'rimg',
-              img: block.settings.background_image,
-              class: 'slideshow-image',
-              size: '2000x2000',
-              crop: slideshow_crop,
-              lazy: true,
-              canvas: true,
-            %}
-          {% else %}
-            <img
-              class="slideshow-image"
-              src="{{ placeholder_slide_image | strip }}"
-              alt=""
-            >
-          {% endif %}
-
-          {% if block.settings.show_overlay %}
-            <div
-              class="
-                slideshow-slide-overlay
-                slideshow-slide-overlay--{{ block.id }}
-              "
-            ></div>
-          {% endif %}
-        </div>
-
-        {% if block.settings.title != blank
-           or block.settings.text != blank
-           or block.settings.button_one_label != blank
-           or block.settings.button_two_label != blank
-        %}
           <div
             class="
-              slideshow-slide-content
-              slideshow-slide-content--{{ block.id }}
-              text-align-{{ block.settings.text_alignment }}
+              slideshow-slide
+              slideshow-height-{{ section.settings.slideshow_height }}
             "
+            {{ block.shopify_attributes }}
           >
-            {% if block.settings.title != blank %}
-              <h2 class="slideshow-slide-heading">
-                {{ block.settings.title | escape }}
-              </h2>
-            {% endif %}
-
-            {% if block.settings.text != blank %}
-              <p class="slideshow-slide-text">
-                {{ block.settings.text | escape }}
-              </p>
-            {% endif %}
-
-            {% if block.settings.button_one_label != blank %}
+            {% if block.settings.link != blank %}
               <a
-                {% if block.settings.button_one_link != blank %}
-                  href="{{ block.settings.button_one_link }}"
-                {% endif %}
                 class="
-                  slideshow-button
-                  button-{{ block.settings.button_one_style }}
+                  slideshow-link
+                  slideshow-height-{{ section.settings.slideshow_height }}
+                "
+                href="{{ block.settings.link }}"
+              >
+            {% endif %}
+
+            {% assign slideshow_crop = 'center' %}
+
+            {% if section.settings.slideshow_height == 'original' %}
+              {% assign slideshow_crop = false %}
+            {% endif %}
+
+            <div
+              class="
+                slideshow-background
+                slideshow-background--{{ block.id }}
+                slideshow-height-{{ section.settings.slideshow_height }}
+                {% if block.settings.background_image == blank %}
+                  placeholder--image
+                {% endif %}
+              "
+              {% if block.settings.background_image %}
+                {%
+                  include 'rimg',
+                  img: block.settings.background_image,
+                  size: '2000x2000',
+                  crop: slideshow_crop,
+                  lazy: true,
+                  background: true,
+                %}
+              {% else %}
+                style="background-image: url('{{ placeholder_slide_image | strip }}')"
+              {% endif %}
+              data-themecolor="{{ settings.color_text }}"
+              data-slidecolor="{{ block.settings.color }}"
+            >
+              {% if block.settings.background_image %}
+                {%
+                  include 'rimg',
+                  img: block.settings.background_image,
+                  class: 'slideshow-image',
+                  size: '2000x2000',
+                  crop: slideshow_crop,
+                  lazy: true,
+                  canvas: true,
+                %}
+              {% else %}
+                <img
+                  class="slideshow-image"
+                  src="{{ placeholder_slide_image | strip }}"
+                  alt=""
+                >
+              {% endif %}
+
+              {% if block.settings.show_overlay %}
+                <div
+                  class="
+                    slideshow-slide-overlay
+                    slideshow-slide-overlay--{{ block.id }}
+                  "
+                ></div>
+              {% endif %}
+            </div>
+
+            {% if block.settings.title != blank
+               or block.settings.text != blank
+               or block.settings.button_one_label != blank
+               or block.settings.button_two_label != blank
+            %}
+              <div
+                class="
+                  slideshow-slide-content
+                  slideshow-slide-content--{{ block.id }}
+                  text-align-{{ block.settings.text_alignment }}
                 "
               >
-                {{ block.settings.button_one_label | escape }}
-              </a>
+                {% if block.settings.title != blank %}
+                  <h2 class="slideshow-slide-heading">
+                    {{ block.settings.title | escape }}
+                  </h2>
+                {% endif %}
+
+                {% if block.settings.text != blank %}
+                  <p class="slideshow-slide-text">
+                    {{ block.settings.text | escape }}
+                  </p>
+                {% endif %}
+
+                {% if block.settings.button_one_label != blank %}
+                  <a
+                    {% if block.settings.button_one_link != blank %}
+                      href="{{ block.settings.button_one_link }}"
+                    {% endif %}
+                    class="
+                      slideshow-button
+                      button-{{ block.settings.button_one_style }}
+                    "
+                  >
+                    {{ block.settings.button_one_label | escape }}
+                  </a>
+                {% endif %}
+
+                {% if block.settings.button_two_label != blank %}
+                  <a
+                    {% if block.settings.button_two_link != blank %}
+                      href="{{ block.settings.button_two_link }}"
+                    {% endif %}
+                    class="
+                      slideshow-button
+                      button-{{ block.settings.button_two_style }}
+                    "
+                  >
+                    {{ block.settings.button_two_label | escape }}
+                  </a>
+                {% endif %}
+              </div>
             {% endif %}
 
-            {% if block.settings.button_two_label != blank %}
-              <a
-                {% if block.settings.button_two_link != blank %}
-                  href="{{ block.settings.button_two_link }}"
-                {% endif %}
-                class="
-                  slideshow-button
-                  button-{{ block.settings.button_two_style }}
-                "
-              >
-                {{ block.settings.button_two_label | escape }}
+            {% if block.settings.link != blank %}
               </a>
             {% endif %}
           </div>
-        {% endif %}
-
-        {% if block.settings.link != blank %}
-          </a>
-        {% endif %}
-      </div>
     {% endfor %}
 
-    {%
-      include 'slideshow-overlay',
-      blocks: section.blocks
-    %}
+    {% include 'slideshow-overlay', blocks: section.blocks %}
   </section>
+
 {% endif %}
 
 {% schema %}
