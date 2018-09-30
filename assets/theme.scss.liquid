@@ -16723,10 +16723,15 @@ $local-image-width: rem(48px);
     transform: translateY(-55%);
     }
 }
-@media only screen and (min-width: 1170px) { 
-  .navmenu-link{
-	font-size:13.5px;
+@media only screen and (max-width: 1200px) { 
+  .navmenu-link, .site-header-actions{
+	font-size:85%;
+    font-weight:500;
   }
+	.site-navigation a {
+     padding: 5px 5px;
+  }
+  
 }
 //desktops and tablets
 @media only screen and (min-width: 1210px) { 
@@ -17250,9 +17255,10 @@ $local-image-width: rem(48px);
   }
 } 
 }
-@media (min-width: 1211px) and (max-width: 1532px) {  
+@media (min-width: 1211px) and (max-width: 1365px) {  
   .product-main{
-    margin-left: -44vw;
+    margin-left: -34.5em; 
     
   }
-}  
+}
+
