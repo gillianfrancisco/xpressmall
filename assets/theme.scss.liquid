@@ -5237,7 +5237,7 @@ $local-header-height: $header-content-height + ($header-padding-vertical-mobile 
     top: 0px;
     padding-top: 0;
     width: 80%;
-    margin-left: -44em;
+    margin-left: -38em;
   }
 
   @include media($min: $bp-large) {
@@ -9808,9 +9808,8 @@ $local-max-width: 680px;
           opacity: 0.8;
           color: red;
         }
-        &:hover {
-          background-color: red;
-          color: white;
+        &:hover { 
+          color: red;
           opacity: 0.8; 
         }
       }
@@ -9830,6 +9829,7 @@ $local-max-width: 680px;
 .navmenu-id-electronics:hover
 .navmenu-submenu,{
   display: block;
+  color: red;
 }
   
 .navmenu-id-hypermarket:hover
@@ -17257,8 +17257,28 @@ $local-image-width: rem(48px);
 }
 @media (min-width: 1211px) and (max-width: 1365px) {  
   .product-main{
-    margin-left: -34.5em; 
+    margin-left: -33.5em; 
     
+  }
+}  
+
+.product-description > div > div{
+   width: 80%;
+} 
+
+.rte > div > div{
+   width: 80%;
+} 
+
+.navmenu-depth-1 > li > a{
+  &:hover {
+     //background-color: red;
+     //color: white;
+     //opacity: 0.8; 
   }
 }
 
+.permahover {
+    //background-color: red;
+    opacity: 0.8; 
+}

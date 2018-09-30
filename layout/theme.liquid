@@ -178,20 +178,98 @@
 <script>
   jQuery.noConflict();
   jQuery(document).ready(function($){
-  		$( ".imagezoom" ).ezPlus({
+  	$( ".imagezoom" ).ezPlus({
           zoomWindowFadeOut: 500,
           cursor: 'crosshair',
           zoomWindowWidth: 800,
           zoomWindowHeight: 800,
           lensSize: 100
 	  	});
-
-      });
-  jQuery(document).ready(function($){
-  	$('#product-gallery--thumbnail-trigger').hover(
+    $(".navmenu-item").parent().css('color', 'red');
+    
+    //$(".meganav-inner").parent().css('background-color', 'red');
+	$('#product-gallery--thumbnail-trigger').hover(
        function(){ $(this).addClass('thumbnail--selected') 
+    }); 
+    //$(".navmenu-link-parent").one("mouseover", function() {
+    //  $(".navmenu-link-parent").addClass('permahover');
+    //}); 
+    //$(".navmenu-link-parent").one("mouseout", function() {
+  	//  $(".navmenu-link-parent").addClass('permahover');
+	//});
+     
+    //sticky header hover
+    $(function(){
+      $(".site-header-menu-toggle--button").hover(function(){
+        $(".shopify-section site-header-wrapper").addClass("visible");
+        $(".site-header-menu-toggle--button").addClass("active");
+        $(".shopify-section site-header-wrapper").addClass("site-header-sticky--open");
+        $(".site-navigation-wrapper").css({"-webkit-transform":"translate(0px,0px)"});
+    }, function(){
+        // change to any color that was previously used.
+        $(".shopify-section site-header-wrapper").removeClass("visible");
+        $(".site-header-menu-toggle--button").removeClass("active");
+        $(".shopify-section site-header-wrapper").removeClass("site-header-sticky--open");
+        $(".site-navigation-wrapper").css({"-webkit-transform":"translate(0px,-40px)"});
     });
-  });
+	}); 
+    
+    var hoverOrClick = function(){
+        $(".shopify-section site-header-wrapper").addClass("site-header-sticky--open");
+        $(".site-navigation-wrapper").css({"-webkit-transform":"translate(0px,0px)"});
+    }
+    var unhoverClick = function(){
+        $(".shopify-section site-header-wrapper").removeClass("site-header-sticky--open");
+        $(".site-navigation-wrapper").css({"-webkit-transform":"translate(0px,-40px)"});
+    }
+    
+    $(function(){
+      $(".site-navigation-wrapper").hover(hoverOrClick,unhoverClick).click(hoverOrClick,unhoverClick);
+	});
+    
+    
+    $(document).scroll(function() { 
+   		if($(window).scrollTop() === 0) {
+          $(".shopify-section site-header-wrapper").addClass("site-header-sticky--open");
+    	  $(".site-navigation-wrapper").css({"-webkit-transform":"translate(0px,0px)"});
+   		} 
+        if($(window).scrollTop() != 0) {  
+          $(".shopify-section site-header-wrapper").removeClass("site-header-sticky--open");
+          $(".site-navigation-wrapper").css({"-webkit-transform":"translate(0px,-40px)"});
+        }
+	});
+    //parent navmenu link hovering change color
+    $(function(){
+      $(".navmenu-link").hover(function(){ 
+        $(this).parent().parent().siblings().css({"color":"red"});
+        $(this).parent().parent().parent().parent().parent().parent().parent().siblings('a').css({"color":"red"});
+    }, function(){
+		$(this).parent().parent().siblings().css({"color":"#000000"});
+        $(this).parent().parent().parent().parent().parent().parent().parent().siblings('a').css({"color":"#000000"});
+    });
+	}); 
+    $(function(){
+      $(".navmenu").hover(function(){ 
+        $(this).parent().parent().siblings().css({"color":"red"});
+    }, function(){
+		$(this).parent().parent().siblings().css({"color":"#000000"});
+    });
+	});  
+    $(function(){
+      $(".navmenu-meganav-items").hover(function(){ 
+        $(this).parent().parent().siblings().css({"color":"red"});
+    }, function(){
+		$(this).parent().parent().siblings().css({"color":"#000000"});
+    });
+	}); 
+    
+    
+  }); 
+  	//class="shopify-section site-header-wrapper visible site-header-sticky--open"
+    //class="shopify-section site-header-wrapper site-header-sticky--open"
+    //class="site-header-menu-toggle--button"
+    //class="site-header-menu-toggle--button active"
+     
 </script> 
  
 
@@ -204,3 +282,4 @@
 </body>
 </html>
    
+ 
