@@ -12,7 +12,6 @@
     <div class="account-login visible" data-account-login-main>
       {% form 'customer_login' %}
 
-
         {% if form.errors != blank %}
           <div class="account-message message--error">
             {{ form.errors | default_errors }}
@@ -153,11 +152,5 @@
         {% endform %}
       </div>
     {% endif %}
-    <section>
-      <br>
-      <br>
-    </section>
-    {% include 'oxi-social-login'  %}
   </article>
 </section>
-
