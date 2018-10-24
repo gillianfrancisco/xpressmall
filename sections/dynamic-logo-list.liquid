@@ -1,35 +1,46 @@
 <section class="logolist--container">
   {% if section.settings.title != blank %}
+  <div class="logolist-title"> 
     <h1 class="home-section--title">
       {{ section.settings.title | escape }}
     </h1>
+  </div>  
   {% endif %}
 
-  <div class="home-section--content logolist--inner">
-    {% for block in section.blocks %}
-      <div class="logolist--item" {{ block.shopify_attributes }}>
-        {% if block.settings.link != blank %}
-          <a class="logolist--link" href="{{ block.settings.link | escape }}" target="_blank">
-        {% endif %}
+  <div class="home-section--content logolist--inner" style="margin-left: -1.5rem;margin-right: -1.5rem;">
+    <div class="box-in">
+     <div class="logo-inner product-row">
+         <button class="logolistprev" >
+    		<svg class="arrowleft" width="14.6" height="24" viewBox="0 0 16 27" xmlns="http://www.w3.org/2000/svg" ><path d="M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z" fill="#000000"></path></svg>
+  		 </button>
+        {% for block in section.blocks %}
+          <div class="logolist--item" {{ block.shopify_attributes }}>
+            {% if block.settings.link != blank %}
+              <a class="logolist--link" href="{{ block.settings.link | escape }}" target="_blank">
+            {% endif %} 
+            {% if block.settings.image %}
+              {%
+                include 'rimg',
+                img: block.settings.image,
+                class: 'logolist--image',
+                size: '160x160',
+                lazy: true,
+                canvas: true
+              %}
+            {% else %}
+              {{ 'image' | placeholder_svg_tag: 'placeholder--image logolist--image' }}
+            {% endif %}
 
-        {% if block.settings.image %}
-          {%
-            include 'rimg',
-            img: block.settings.image,
-            class: 'logolist--image',
-            size: '160x160',
-            lazy: true,
-            canvas: true
-          %}
-        {% else %}
-          {{ 'image' | placeholder_svg_tag: 'placeholder--image logolist--image' }}
-        {% endif %}
-
-        {% if block.settings.link != blank %}
-          </a>
-        {% endif %}
-      </div>
-    {% endfor %}
+            {% if block.settings.link != blank %}
+              </a>
+            {% endif %}
+          </div>  
+        {% endfor %}
+        <button class="logolistnext">
+          <svg class="arrowright" width="14.6" height="24" viewBox="0 0 16 27" xmlns="http://www.w3.org/2000/svg"><path d="M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z" fill="#000000" ></path></svg>
+        </button>
+    </div>
+  </div>
   </div>
 </section>
 
@@ -70,6 +81,18 @@
       "category": "Image",
       "name": "Logo list",
       "blocks": [
+        {
+          "type": "logo"
+        },
+        {
+          "type": "logo"
+        },
+        {
+          "type": "logo"
+        },
+        {
+          "type": "logo"
+        },
         {
           "type": "logo"
         },

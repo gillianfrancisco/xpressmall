@@ -1,7 +1,7 @@
 {% include 'pagination' with settings.collection_sidebar %}
 {% assign collection = collections[section.settings.collection] %}
 
-{% assign product_limit = 15 %}
+{% assign product_limit = 25 %}
 {% assign products = collection.products %}
 {% assign onboarding = false %}
 
@@ -13,19 +13,26 @@
 <script src="{{ '../assets/scripts.js.liquid' | asset_url }}"></script>
 <section class="product-row--container featured-collection--container">
   {% if section.settings.title != blank %}
-    <div class="hometitle"><h1 class="home-section--title">
+    <div class="hometitle">
+      <h1 class="home-section--title">
       {{ section.settings.title | escape }}
-      </h1></div>
+      </h1>
+    </div>
   {% endif %} 
-  <div class="viewfixer">
- <!-- <div class="featured-collection--banner-outer" > -->
+   <!-- <div class="featured-collection--banner-outer" > -->
+     <div class="viewfixer">  
+ 
     <a href="{% if collection.url != blank %}{{ collection.url }}{% else %}#{% endif %}">
       <button class="viewallbutton"> VIEW ALL </button> 
     </a>
-  </div>
+  </div>   
+<!--  </div> -->
  <!-- </div> -->
 <div class="insidebox">
-<div class="home-section--content product-row " id="contentrow" data-product-row>
+<div class="home-section--content product-row " id="contentrow" data-product-row> 
+  <button class="btn prev prev-button" >
+    <svg class="arrowleft" width="14.6" height="24" viewBox="0 0 16 27" xmlns="http://www.w3.org/2000/svg" ><path d="M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z" fill="#000000"></path></svg>
+  </button>
  {% for product in products limit: product_limit %}
       {%
         include 'product-grid-item',
@@ -45,10 +52,12 @@
         %}
       {% endfor %}
     {% endfor %}
+    <button class="btn next next-button">
+      <svg class="arrowright" width="14.6" height="24" viewBox="0 0 16 27" xmlns="http://www.w3.org/2000/svg"><path d="M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z" fill="#000000" ></path></svg>
+  </button> 
   </div>
   
- <span class="btn prev"></span>
-  <span class="btn next"></span>
+
 <!--
        <div
       class="

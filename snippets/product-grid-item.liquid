@@ -153,7 +153,21 @@
               </span>
             </span>
           </span>
-        </div>
+          <h3>{{ inventory_quantity }}</h3>
+          {% for tag in product.tags %}
+            {% if tag contains 'deal time' %} 
+              <div class="xpress-deals-countdown"> 
+                <div class="secret-base">
+                  var tagsname=[];
+                  tagsname.push( {{ tag | json }});   
+                </div>
+                {% capture dealtimevar %}tagsname{% endcapture %}
+                <p class="deal-countdown"></p>
+                <div id="progressbar"></div> 
+              </div>
+           {% endif %}
+          {% endfor %} 
+        </div> 
       {% endif %}
 
       {% if product_description %}

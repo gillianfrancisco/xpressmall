@@ -88,8 +88,8 @@
                   </div>
                 {% endcomment %}
               </div>
-            {% endif %}
-
+            {% endif %} 
+<!-- 
             {%
               include 'rimg',
               img: image,
@@ -97,6 +97,8 @@
               lazy: true,
               canvas: true
             %}
+--> 
+           <img class=image-zoom src={{ image | img_url: '480x480' }}  data-zoom="{{ image | img_url: '2048x2048', scale: 3}}">
           {% endif %}
         </div>
       </figure>

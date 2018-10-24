@@ -12061,7 +12061,6 @@ proto.setGallerySize = function() {
   if ( this.options.setGallerySize ) {
     var height = this.options.adaptiveHeight && this.selectedSlide ?
       this.selectedSlide.height : this.maxCellHeight;
-    console.log(this.selectedSlide.height, this.maxCellHeight);
     this.viewport.style.height = height + 'px';
   }
 };

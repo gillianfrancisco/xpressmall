@@ -1,0 +1,153 @@
+<div>
+  {% for block in section.blocks %}
+  <div class="grid-item" {{ block.shopify_attributes }}>
+    {% case block.type %}
+
+      {% when 'hero' %}
+      {% include 'snippet_hero-banner' %}
+
+      {% when 'program' %}
+      {% include 'snippet_module-program' %}
+
+      {% when 'coaching' %}
+      {% include 'snippet_coaching' %}
+
+      {% when 'shop' %}
+      {% include 'snippet_shop-now' %}
+
+      {% when 'promo' %}
+      {% include 'snippet_promo' %}
+
+      {% when 'comparison' %}
+      {% include 'snippet_comparison' %}
+
+    {% endcase %}
+  </div>
+  {% endfor %}
+</div>
+
+{% schema %}
+  {
+    "blocks": [
+      {
+        "type": "hero",
+        "name": "Hero Banner",
+        "settings": [
+          {
+            "id": "bannerImage",
+            "type": "image_picker",
+            "label": "Banner Image"
+          }
+        ]
+      },
+      {
+        "type": "program",
+        "name": "Program Selector",
+        "settings": [
+          {
+            "id": "program",
+            "type": "radio",
+            "label": "Choose a program",
+            "options": [
+              {"value": "planA", "label": "Plan Type A"},
+              {"value": "planB", "label": "Plan Type B"},
+              {"value": "planC", "label": "Plan Type C"}
+            ]
+          }
+        ]
+      },
+      {
+        "type": "coaching",
+        "name": "Coaching",
+        "settings": [
+          {
+            "id": "coachingTitle",
+            "type": "text",
+            "label": "Title"
+          },
+          {
+            "id": "coachingSummary",
+            "type": "textarea",
+            "label": "Summary"
+          },
+          {
+            "id": "coachingImage",
+            "type": "image_picker",
+            "label": "Image"
+          }
+        ]
+      },
+      {
+        "type": "shop",
+        "name": "Shop Now",
+        "settings": [
+          {
+            "id": "shopNowTitle",
+            "type": "text",
+            "label": "Title",
+            "default": "What do you have to lose? Shop now."
+          },
+          {
+            "id": "shopNowHeader1",
+            "type": "text",
+            "label": "Left Header",
+            "default": "The 4-1-1"
+          }
+        ]
+      },
+      {
+        "type": "promo",
+        "name": "Promo",
+        "settings": [
+          {
+            "id": "promoTitle",
+            "type": "textarea",
+            "label": "Title"
+          },
+          {
+            "id": "promoSubtitle",
+            "type": "textarea",
+            "label": "Subtitle"
+          }
+        ]
+      },
+      {
+        "type": "comparison",
+        "name": "Compare",
+        "settings": [
+          {
+            "id": "comparisonImage",
+            "type": "image_picker",
+            "label": "image"
+          },
+          {
+            "id": "comparisonTitle",
+            "type": "text",
+            "label": "Title"
+          },
+          {
+            "id": "comparisonSummary",
+            "type": "textarea",
+            "label": "Summary"
+          },
+          {
+            "id": "comparisonButtonLink",
+            "type": "url",
+            "label": "Button Link"
+          },
+          {
+            "id": "comparisonButtonText",
+            "type": "text",
+            "label": "Button Text"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

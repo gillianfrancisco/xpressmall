@@ -1,8 +1,11 @@
+
 <section class="collection-list--container">
   {% if section.settings.title != blank %}
+  <div class="coll-list-title"> 
     <h1 class="home-section--title">
-      {{ section.settings.title | escape }}
+        {{ section.settings.title | escape }}
     </h1>
+  </div>
   {% endif %}
 
   {% if section.blocks.size > 0 %}

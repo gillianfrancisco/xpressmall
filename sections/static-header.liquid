@@ -111,6 +111,43 @@
 {% endif %}
 
 <section
+  class="fixed-site-header-mobile"
+  data-site-header-main
+  {% if section.settings.sticky_header %}data-site-header-sticky{% endif %}>
+  
+  <div class="site-header-menu-toggle">
+    <a class="site-header-menu-toggle--button" href="#" data-menu-toggle>
+      <span class="toggle-icon--bar toggle-icon--bar-top"></span>
+      <span class="toggle-icon--bar toggle-icon--bar-middle"></span>
+      <span class="toggle-icon--bar toggle-icon--bar-bottom"></span>
+      <span class="show-for-sr">{{ 'general.accessibility.menu' | t }}</span>
+    </a>
+  </div>
+
+  <div class="site-header-main">
+    {%
+      include 'live-search-form',
+      quick_links: linklists[section.settings.quick_links],
+      enable_live_search: section.settings.enable_live_search,
+      enable_images: section.settings.enable_live_search_images,
+      enable_content: section.settings.enable_live_search_articles_pages
+    %}
+  </div>
+  
+  <div class="site-header-cart">
+    <a class="site-header-cart--button" href="/cart">
+      <span
+        class="site-header-cart--count {% if cart.item_count > 0 %}visible{% endif %}"
+        data-header-cart-count="{% if cart.item_count > 0 %}{{ cart.item_count }}{% endif %}">
+      </span>
+
+      {% include 'icon-cart' %}
+      <span class="show-for-sr">{{ 'general.accessibility.cart' | t }}</span>
+    </a>
+  </div>
+</section>
+
+<section
   class="site-header"
   data-site-header-main
   {% if section.settings.sticky_header %}data-site-header-sticky{% endif %}>
@@ -271,6 +308,7 @@
   </div>
   </div>
 </section>
+
   {%- capture site_navigation_classes -%}
   site-navigation-wrapper
   {% if shop.customer_accounts_enabled or settings.enable_currency_converter %}
