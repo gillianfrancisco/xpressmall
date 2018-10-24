@@ -8,7 +8,6 @@
   <article class="account-page-content">
     {% form 'create_customer' %}
 
-
       {% assign has_message = false %}
 
       {% if form.errors != blank %}
@@ -114,10 +113,5 @@
       </div>
 
     {% endform %}
-     <section>
-      <br>
-      <br>
-    </section>
-    {% include 'oxi-social-login' %}
   </article>
 </section>
