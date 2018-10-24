@@ -48,7 +48,7 @@
             {{ 'image' | placeholder_svg_tag: 'placeholder--image' }}
           {% endif %}
         {%- endcapture -%}
-        ,
+        , 
         {
           "title": {{ item.title | highlight: sanitized_terms | json }},
           "id": {{ item.id | json }},
