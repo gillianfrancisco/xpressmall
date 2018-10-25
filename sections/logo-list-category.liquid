@@ -1,7 +1,7 @@
 <section class="logolist--container">
   {% if section.settings.title != blank %}
   <div class="logolist-title"> 
-    <h1 class="home-section--title">
+    <h1 class="logolist-ch-title">
       {{ section.settings.title | escape }}
     </h1>
   </div>  
@@ -9,11 +9,14 @@
 
   <div class="home-section--content logolist--inner" style="margin-left: -1.5rem;margin-right: -1.5rem;">
     <div class="box-in">
-     <div class="logo-inner product-row ">
+     <div class="logo-inner product-row flickity-enabled is-draggable">
          <button class="logolistprev" >
     		<svg class="arrowleft" width="14.6" height="24" viewBox="0 0 16 27" xmlns="http://www.w3.org/2000/svg" ><path d="M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z" fill="#000000"></path></svg>
   		 </button>
         {% for block in section.blocks %}
+          {% assign collection = collections[block.settings.collection] %}
+          {% assign collection_title = collection.title %}
+          {% assign collection_url = collection.url %}
           <div class="logolist--item" {{ block.shopify_attributes }}>
             {% if block.settings.link != blank %}
               <a class="logolist--link" href="{{ block.settings.link | escape }}" target="_blank">
@@ -34,6 +37,19 @@
             {% if block.settings.link != blank %}
               </a>
             {% endif %}
+             <div class="featured-collection--banner-inner">
+          <span class="featured-collection--banner-subtitle">
+            {{ 'onboarding.featured_collection.subtitle' | t }}
+          </span>
+
+          <h3 class="featured-collection--banner-title">
+            {% unless onboarding %}
+              {{ collection.title | escape }}
+            {% else %}
+              {{ 'onboarding.featured_collection.title' | t }}
+            {% endunless %}
+          </h3>
+        </div>
           </div>  
         {% endfor %}
         <button class="logolistnext">
@@ -54,7 +70,7 @@
       "type": "text",
       "id": "title",
       "label": "Heading",
-      "default": "Logo list"
+      "default": "∙"
     }
   ],
   "blocks": [
@@ -63,6 +79,11 @@
       "name": "Logo",
       "settings": [
         {
+          "id": "collection",
+          "type": "collection",
+          "label": "Collection"
+        },
+ 		{
           "id": "image",
           "type": "image_picker",
           "label": "Image",

@@ -96,6 +96,7 @@
       {% if template == 'index' %}
       	 {% section 'static-highlights-banners' %}  
      	{% section 'static-slideshow' %}
+         {% section 'logo-list-category' %}
       {% endif %}
 
       {{ content_for_layout }}
@@ -213,8 +214,8 @@
     //scrolltop//
     $header = $('.site-navigation-wrapper');
     $(window).on('scroll',function() {
-      //if ($(this).scrollTop() <= 0 && !$header.hasClass('top') && ($(window).width() >= 1024)) {
-        if ($(this).scrollTop() <= 0 && !$header.hasClass('top') && ($(window).width() >= 768)) {
+      if ($(this).scrollTop() <= 0 && !$header.hasClass('top') && ($(window).width() >= 1024)) {
+        //if ($(this).scrollTop() <= 0 && !$header.hasClass('top') && ($(window).width() >= 768)) {
         $header.addClass('top');
         $header.removeClass('nottop');
         $(".site-navigation-wrapper").css({"-webkit-transform":"translate(0px,0px)"});
@@ -229,7 +230,6 @@
         //$(".site-navigation-wrapper").css({"-webkit-transform":"translate(0px,-40px)"});
         //$(".site-navigation-wrapper").css({"transform":"translate(0px,-40px)"});
         //$(".site-navigation-wrapper").hide();
-
       }
       else if ($(this).scrollTop() >= 0){
         $header.removeClass('top');
@@ -251,18 +251,18 @@
     //mobile custom menu//
     $header = $('.site-header');
     $(window).on('scroll',function() { 
-        if ($(this).scrollTop() <= 0 && !$header.hasClass('top') && ($(window).width() <= 768)) {
+        if ($(this).scrollTop() <= 0 && !$header.hasClass('top') && ($(window).width() <= 767)) {
 		$(".site-header-logo").show();
         $(".site-header-menu-toggle").show();
         $header.addClass('top');
         $header.removeClass('nottop');
-      } else if (($(this).scrollTop() >= 0) &&($header.hasClass('top')) && ($(window).width() <= 768) && ($(window).width() <= 768)) {
+      } else if (($(this).scrollTop() >= 0) &&($header.hasClass('top')) && ($(window).width() <= 767) ) {
         $header.removeClass('top');
         $header.addClass('nottop');
         $(".site-header-logo").hide();
         $(".site-header-menu-toggle").hide();
       }
-      else if (($(this).scrollTop() >= 0)&& ($(window).width() <= 768)){
+      else if (($(this).scrollTop() >= 0)&& ($(window).width() <= 767)){
         $header.removeClass('top');
         $header.addClass('nottop');
         $(".site-header-logo").hide();
@@ -285,16 +285,18 @@
         var y = $(this).scrollTop();
         $(function(){
           $(".site-navigation-wrapper, .site-header-menu-toggle, .site-navigation--has-actions").hover(function(){
-            //if (($(this).scrollTop() <= 0 && ($(window).width() >= 1024))){
-            if (($(this).scrollTop() <= 0 && ($(window).width() >= 768))){
+            if (($(this).scrollTop() <= 0 && ($(window).width() >= 1024))){
+            //if (($(this).scrollTop() <= 0 && ($(window).width() >= 768))){
               $headerwrap.addClass("visible");
               $togglemenu.addClass("active");
               $headerwrap.addClass("site-header-sticky--open");
               $navwrap.css({"-webkit-transform":"translate(0px,0px)"});
               $navwrap.css({"transform":"translate(0px,0px)"});
               $(".site-navigation-wrapper").show();
+             
             }}, function(){
-              if (($(window).scrollTop() !== 0) && ($(window).width() >= 768)) {
+              //if (($(window).scrollTop() !== 0) && ($(window).width() >= 768)) {
+              if (($(window).scrollTop() !== 0) && ($(window).width() >= 1024)) {
                 $headerwrap.removeClass("visible");
                 $togglemenu.removeClass("active");
                 $headerwrap.removeClass("site-header-sticky--open");
@@ -460,24 +462,7 @@
        event.strftime('%H :%M :%S')
       );
     });
-    $(".deal-countdown").css({"color":"red"});
-    $( function() {
-    $( "#progressbar" ).progressbar({
-      value: 30
-    });
-    });
-    
-    
-    var bar = new ProgressBar.Line(progressbar, {
-  strokeWidth: 3,
-  easing: 'easeInOut',
-  duration: 2400,
-  color: '#FFEA82',
-  trailColor: '#eee',
-  trailWidth: 1,
-  svgStyle: {width: '100%', height: '100%'}
-   
-});
+
   
 /*
   $mobiheader = $('.fixed-site-header-mobile');
