@@ -2554,9 +2554,9 @@ $local-input-padding-vertical-top: $local-input-padding-vertical-base + rem(9px)
       right: 0px;
   }
 }
-.slideshow-slide{
+/* .slideshow-slide{
   min-height: 336px;
-}
+} */
 @media screen and (max-width: 1024px) {
   .flickity-prev-next-button {
    visibility: hidden; 
@@ -18188,13 +18188,24 @@ body {
 
 
 
+.slideshow .next:hover
+{
+ box-shadow: none; 
+}
 
 
 
+.home-section--title
+{
+  
+    padding-bottom: 16px;
+}
 
-
-
-
+.productitem--title
+{
+  
+  margin-bottom: 0px;
+}
 
 
 .slideshow-slide img
@@ -18202,224 +18213,300 @@ body {
   width:100%;
 }
 
-@media (max-width: 2000px) {
-  
-  .shopify-section.slideshow--section {
-    width: 1720px !important; 
-    margin: 0 auto;
-    height: 336px!important;  
-     overflow: hidden;
-  
-}
-  
-  
-  
-}
 
-@media (max-width: 1719px) {
-  
-  .shopify-section.slideshow--section {
-    width: 100% !important; 
+/*   @media only screen and (max-width: 2000px) and (min-width: 1700px) { */
+
+@media (max-width: 2000px)
+  { 
+
+    
+ .shopify-section.slideshow--section
+  {
+    max-width: 1720px;
+    height: 344px !important;
     margin: 0 auto;
-    height: 336px!important;  
-     
+    
   
 }
-  .flickity-viewport
+  
+  .slideshow .flickity-viewport
   {
-     height: 336px!important; 
+    height: 336px !important; 
+    margin-top: 8px;
     
   }
   
   
+  .slideshow-height-small {
+    height: 336px;
+} 
+  
+}
+
+@media (max-width: 1600px) {
+  
+   .shopify-section.slideshow--section
+  {
+    max-width: 1600px;
+    height: 320.56px !important;
+    margin: 0 auto;
+    
+  
+}
+  
+  .slideshow .flickity-viewport
+  {
+    height: 312.56px !important; 
+    margin-top: 8px;
+    
+  }
+  
+  
+  .slideshow-height-small {
+    height: 312.56px;
+}  
+  
+  
+  
+  .slideshow-slide img
+  
+  {
+    display: inline-block;
+    vertical-align: middle;
+    
+  }
+  
+  
+  
+}
+@media (max-width: 1300px) {
+   .shopify-section.slideshow--section
+  {
+    max-width: 1300px;
+    height: 261.95px !important;
+    margin: 0 auto;
+    
+  
+}
+  
+  .slideshow .flickity-viewport
+  {
+    height: 253.95px !important; 
+    margin-top: 8px;
+    
+  }
+  
+  
+  .slideshow-height-small {
+    height: 253.95px;
+} 
+   
   
 }
 
 
 @media (max-width: 1200px) {
   
-
+    .shopify-section.slideshow--section
+  {
+    max-width: 1200px;
+    height: 242.42px !important;
+    margin: 0 auto;
+    
   
+}
+  
+  .slideshow .flickity-viewport
+  {
+    height: 234.42px !important; 
+    margin-top: 8px;
+    
+  }
+  
+  
+  .slideshow-height-small {
+   height: 234.42px;
+} 
   
   
 }
 
 @media (max-width: 1024px) {
   
-  .shopify-section.slideshow--section {
-     width: 100% !important; 
-   
-  
-}
-  
-  
- .slideshow-height-small {
-    height: auto !important; 
-}
-  
-   .flickity-viewport
+.shopify-section.slideshow--section
   {
-     height: 336px!important; 
+    max-width: 1024px;
+    height: 200.03px !important;
+    margin: 0 auto;
+    
+  
+}
+  
+  .slideshow .flickity-viewport
+  {
+   height: 200.03px !important;
+    margin-top: 0px;
     
   }
   
   
+  .slideshow-height-small {
+   height: 200.03px !important;
+} 
+
 }
+
+
 @media (max-width: 992px) {
   
-   .shopify-section.slideshow--section {
-    height: 436px !important; 
+  .product-row--container
+  {
+   margin-top: 28px; 
+}
+  .shopify-section.slideshow--section
+  {
+   
+    height: 186.12px !important;
+    margin: 0 auto;
+    
   
 }
- 
+  
+  .slideshow .flickity-viewport
+  {
+   height: 194.12px !important;
+   margin-top: 0px;
+    
+  }
+  
+  
+  .slideshow-height-small {
+   height: 194.12px !important;
+} 
+
   
   
 }
 
 @media (max-width: 900px)
   {
- .shopify-section.slideshow--section {
-    height: 398px !important;
-  
-} 
-    
     
     
   }
-@media (max-width: 860px)
-  {
- .shopify-section.slideshow--section {
-    height: 381px !important;
+
+
+
+@media (max-width: 860px) {
   
-} 
-    
-    
-    
-  }
+  
+  
+  
+  
+}
+
 
 @media (max-width:823px) {
   
-   .shopify-section.slideshow--section
-  {
-    height: 356px!important; 
   
-  }
-  .flickity-viewport {
-    height: 336px !important;
-}
+  
+  
   
 }
+
 @media (max-width:768px) {
   
-   .shopify-section.slideshow--section
-  {
-    height: 343px!important; 
-    
-  }
   
-  .flickity-viewport
-  {
-    height: 323px!important;  
-  
-} 
 }
+
+
 
 @media (max-width: 736px) {
   
-  .shopify-section.slideshow--section
-  {
-    height: 330px!important; 
-   
-  } 
   
   
 }
 
 @media (max-width: 731px) {
   
-  .shopify-section.slideshow--section
-  {
-    height: 326px!important; 
-   
-  } 
   
   
 }
 
+
+
 @media (max-width: 700px) {
-  
-  .shopify-section.slideshow--section
-  {
-    height: 314px!important; 
-   
-  } 
   
   
 }
 
 @media (max-width: 667px) {
   
-  .shopify-section.slideshow--section
-  {
-    height: 300px!important; 
-   
-  } 
   
   
 }
+
+
 @media (max-width: 640px) {
   
-   .shopify-section.slideshow--section
-  {
-    height: 290px!important; 
-  
-  } 
-  
   
 }
-
 
 @media (max-width:625px) {
+ 
   
   
   
-    .shopify-section.slideshow--section
+  .shopify-section.slideshow--section
   {
-    height: 284px!important; 
-   
-  } 
-  
-  
-  
+    max-width: 100%;
+    height:328.02px  !important;
+    margin: 0 auto;
+    
   
 }
+  
+  .slideshow .flickity-viewport
+  {
+    height: 336.02px !important; 
+    
+    
+  }
+  
+    .slideshow-height-small {
+    height: 336.02px!important;
+}
+  
+}
+
+
+
 @media (max-width:568px) {
   
   
   
-    .shopify-section.slideshow--section
+}
+@media (max-width:540px) {
+   .shopify-section.slideshow--section
   {
-    height: 260px!important; 
-   
-  } 
-  
-  
-  
+    max-width: 100%;
+   height: 282.32px !important;
+    margin: 0 auto;
+    
   
 }
-
-@media (max-width:540px) {
   
-  
-  
-    .shopify-section.slideshow--section
+  .slideshow .flickity-viewport
   {
-    height: 246px!important; 
-   
-  } 
+    height: 290.32px !important; 
+    
+    
+  }
   
+    .slideshow-height-small {
+    height: 290.32px !important;
+}
   
-  
+ 
   
 }
 
@@ -18427,60 +18514,38 @@ body {
 @media (max-width:480px) {
   
   
-  
-   .shopify-section.slideshow--section
-  {
-    height: 220px!important; 
-   
-  } 
-  
-  
-  
-  
 }
-
-
 
 @media (max-width:420px) {
   
-  
-   .shopify-section.slideshow--section
+  .shopify-section.slideshow--section
   {
-    height: 193px!important; 
     
-  } 
+     height: 217.80px!important; 
+    margin: 0 auto;
+    
   
-/*   .slideshow .flickity-viewport 
+}
+  
+  .slideshow .flickity-viewport
   {
-     min-height:196px !important;
+      height: 225.80px!important;  
+    
+    
   }
-  .slideshow-slide
-  {
-    min-height:196px !important; 
-} */
+  
+    .slideshow-height-small {
+    height: 225.80px!important; 
+}
   
   
 }
-
 
 
 @media (max-width:390px) {
   
   
-   .shopify-section.slideshow--section
-  {
-    height: 184px!important; 
-    position: relative;
-  } 
   
-/*   .slideshow .flickity-viewport 
-  {
-     min-height:184px !important;
-  }
-  .slideshow-slide
-  {
-    min-height:184px !important; 
-} */
   
   
 }
@@ -18490,61 +18555,37 @@ body {
 @media (max-width:375px) {
   
   
-  .shopify-section.slideshow--section
-  {
-    height: 178px!important; 
-    position: relative;
-  } 
   
-/*   .slideshow .flickity-viewport 
-  {
-     min-height:170px !important;
-  }
-  .slideshow-slide
-  {
-    min-height:170px !important; 
-}
-   */
+  
   
 }
-
 
 @media (max-width:360px) {
   
   
-  .shopify-section.slideshow--section
-  {
-    height: 168px!important; 
-    position: relative;
-  } 
-  
 }
-
 
 
 @media (max-width:320px) {
   
-  
   .shopify-section.slideshow--section
   {
-    height: 154px!important; 
-    position: relative;
-  } 
+    max-width:100%;
+     height: 164.04px!important; 
+    margin: 0 auto;
+    
   
+}
   
-/*   .slideshow .flickity-viewport 
+  .slideshow .flickity-viewport
   {
-     min-height:154px !important;
+      height: 172.04px!important;  
+    
+    
   }
-  .slideshow-slide
-  {
-    min-height:154px !important; 
-} */
   
-  .product-row--container.featured-collection--container .hometitle
-  {
-  transform: translateY(0%)!important;
-  
+    .slideshow-height-small {
+     height: 172.04px!important;
 }
 
 }
